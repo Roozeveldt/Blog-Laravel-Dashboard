@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Main\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::namespace('App\Http\Controllers\Main')->group(function () {
-    Route::get('/', 'IndexController');
-    Route::get('/test', 'TestController');
-});
+Route::namespace('App\Http\Controllers\Main')
+    ->group(function () {
+        Route::get('/', 'IndexController');
+    });
+
+Route::namespace('App\Http\Controllers\Admin')
+    ->prefix('admin')
+    ->group(function () {
+        Route::namespace('Main')
+            ->group(function () {
+                Route::get('/', 'IndexController')->name('admin.main.index');
+            });
+        Route::namespace('Category')
+            ->prefix('categories')
+            ->group(function () {
+                Route::get('/', 'IndexController')->name('admin.category.index');
+                Route::get('/create', 'CreateController')->name('admin.category.create');
+                Route::post('/', 'StoreController')->name('admin.category.store');
+            });
+    });
 
 Auth::routes();
