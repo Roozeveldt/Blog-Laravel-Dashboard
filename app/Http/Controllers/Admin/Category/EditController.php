@@ -9,6 +9,8 @@ class EditController extends Controller
 {
 	public function __invoke( Category $category )
 	{
-		return view('admin.Category.edit', compact('category'));
+        $pageTitle = 'Редактирование категории ' . $category->name;
+
+		return view('admin.Category.edit', compact('category', 'pageTitle'));
 	}
 }

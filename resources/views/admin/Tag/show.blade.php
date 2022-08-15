@@ -11,7 +11,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('admin.category.index') }}">Категории</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.tag.index') }}">Тэги</a></li>
                             <li class="breadcrumb-item active">{{ $pageTitle }}</li>
                         </ol>
                     </div>
@@ -31,11 +31,11 @@
                                     <tbody>
                                         <tr>
                                             <th scope="row" style="width: 20%">ID</th>
-                                            <td>{{ $category->id }}</td>
+                                            <td>{{ $tag->id }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row" style="width: 20%">Название</th>
-                                            <td>{{ $category->name }}</td>
+                                            <td>{{ $tag->name }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row" style="width: 20%">Кол-во постов, всего</th>
@@ -49,8 +49,8 @@
                                 </table>
                             </div>
                             <div class="card-footer">
-                                <a href="{{ route('admin.category.edit', $category->id) }}" role="button" class="btn bg-gradient-indigo btn-sm">Редактировать</a>
-                                <form action="{{ route('admin.category.delete', $category->id) }}" method="post" class="float-right">
+                                <a href="{{ route('admin.tag.edit', $tag->id) }}" role="button" class="btn bg-gradient-indigo btn-sm">Редактировать</a>
+                                <form action="{{ route('admin.tag.delete', $tag->id) }}" method="post" class="float-right">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn bg-gradient-danger btn-sm">Удалить</button>
@@ -59,11 +59,11 @@
                         </div>
                         <div class="card card-purple card-outline">
                             <div class="card-header">
-                                Посты в категории {{ $category->name }}
+                                Посты с тэгом {{ $tag->name }}
                             </div>
                             <div class="card-body">
                                 <table class="table table-bordered">
-{{--                                    TODO: вывести таблицу с постами в категории --}}
+{{--                                    TODO: вывести таблицу с постами с тэгом --}}
                                 </table>
                             </div>
                         </div>
