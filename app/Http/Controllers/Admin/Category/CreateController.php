@@ -8,6 +8,8 @@ class CreateController extends Controller
 {
 	public function __invoke()
 	{
-        return view('admin.Category.create');
+        $pageTitle = 'Новая категория';
+
+        return view('admin.Category.create', compact('pageTitle'));
     }
 }
