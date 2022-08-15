@@ -23,7 +23,7 @@
                     <div class="col-md-12">
                         <div class="card card-primary card-outline">
                             <div class="card-header">
-                                <a href="{{ route('admin.category.create') }}" role="button" class="btn bg-gradient-danger btn-sm">Новая категория</a>
+                                <a href="{{ route('admin.tag.create') }}" role="button" class="btn bg-gradient-danger btn-sm">Новый тэг</a>
                             </div>
                             <div class="card-body">
                                 <table class="table table-bordered">
@@ -31,22 +31,20 @@
                                     <tr>
                                         <th style="width: 10px">#</th>
                                         <th>Название</th>
-                                        <th>Количество постов</th>
                                         <th style="width: 40px">View</th>
                                         <th style="width: 40px">Edit</th>
                                         <th style="width: 40px">Delete</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($categories as $item)
+                                    @foreach($tags as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td><a href="{{ route('admin.category.show', $item->id) }}">{{ $item->name }}</a></td>
-                                        <td>000</td>
-                                        <td><a href="{{ route('admin.category.show', $item->id) }}"><span class="badge bg-info">View</span></a></td>
-                                        <td><a href="{{ route('admin.category.edit', $item->id) }}"><span class="badge bg-warning">Edit</span></a></td>
+                                        <td><a href="{{ route('admin.tag.show', $item->id) }}">{{ $item->name }}</a></td>
+                                        <td><a href="{{ route('admin.tag.show', $item->id) }}"><span class="badge bg-info">View</span></a></td>
+                                        <td><a href="{{ route('admin.tag.edit', $item->id) }}"><span class="badge bg-warning">Edit</span></a></td>
                                         <td>
-                                            <form action="{{ route('admin.category.delete', $item->id) }}" method="post">
+                                            <form action="{{ route('admin.tag.delete', $item->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="bg-transparent border-0 pt-0"><span class="badge bg-danger">Delete</span></button>
