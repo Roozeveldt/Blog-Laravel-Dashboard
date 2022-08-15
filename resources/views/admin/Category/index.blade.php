@@ -23,7 +23,7 @@
                     <div class="col-md-12">
                         <div class="card card-primary card-outline">
                             <div class="card-header">
-                                <a href="{{ route('admin.category.create') }}" role="button" class="btn w-25 bg-gradient-danger btn-lg">Новая категория</a>
+                                <a href="{{ route('admin.category.create') }}" role="button" class="btn bg-gradient-danger btn-sm">Новая категория</a>
                             </div>
                             <div class="card-body">
                                 <table class="table table-bordered">
@@ -32,6 +32,7 @@
                                         <th style="width: 10px">#</th>
                                         <th>Название</th>
                                         <th>Количество постов</th>
+                                        <th style="width: 40px">View</th>
                                         <th style="width: 40px">Edit</th>
                                         <th style="width: 40px">Delete</th>
                                     </tr>
@@ -40,10 +41,17 @@
                                     @foreach($categories as $category)
                                     <tr>
                                         <td>{{ $category->id }}</td>
-                                        <td>{{ $category->name }}</td>
+                                        <td><a href="{{ route('admin.category.show', $category->id) }}">{{ $category->name }}</a></td>
                                         <td>000</td>
-                                        <td><span class="badge bg-warning">Edit</span></td>
-                                        <td><span class="badge bg-danger">Delete</span></td>
+                                        <td><a href="{{ route('admin.category.show', $category->id) }}"><span class="badge bg-info">View</span></a></td>
+                                        <td><a href="{{ route('admin.category.edit', $category->id) }}"><span class="badge bg-warning">Edit</span></a></td>
+                                        <td>
+                                            <form action="{{ route('admin.category.delete', $category->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="bg-transparent border-0 pt-0"><span class="badge bg-danger">Delete</span></button>
+                                            </form>
+                                        </td>
                                     </tr>
                                     @endforeach
                                     </tbody>
